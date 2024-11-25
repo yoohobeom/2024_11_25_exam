@@ -1,0 +1,48 @@
+CREATE DATABASE exam_exam;
+USE exam_exam;
+
+CREATE TABLE `member`(
+	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT
+	, regDate DATETIME NOT NULL
+	, updateDate DATETIME NOT NULL
+	, `name` VARCHAR(20) NOT NULL
+	, email VARCHAR(100) NOT NULL
+	, loginPw VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE article(
+	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT
+	, regDate DATETIME NOT NULL
+	, updateDate DATETIME NOT NULL
+	, memberId INT UNSIGNED NOT NULL
+	, title VARCHAR(100) NOT NULL
+	, `body` TEXT NOT NULL 
+);
+
+CREATE TABLE reply(
+	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT
+	, regDate DATETIME NOT NULL
+	, updateDate DATETIME NOT NULL
+	, replyId VARCHAR(100) NOT NULL
+	, `body` TEXT NOT NULL
+);
+
+INSERT INTO article
+	SET regDate = NOW()
+			, updateDate = NOW()
+			, memberId = 1
+			, title = '제목3'
+			, `body` = '내용3';
+			
+INSERT INTO `member`
+	SET regDate = NOW()
+			, updateDate = NOW()
+			, email = 'test1'
+			, loginPw = 'test1'
+			, `name` = '유저1';
+			
+SELECT *
+	FROM `member`;
+
+SELECT *
+	FROM article;
